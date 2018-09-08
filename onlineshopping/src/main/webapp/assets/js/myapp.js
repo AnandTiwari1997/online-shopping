@@ -392,9 +392,9 @@ $(function() {
 			},
 			errorElement : 'em',
 			errorPlacement : function(error, element) {
-				//add the class of help-block
+				// add the class of help-block
 				error.addClass('help-block');
-				//add the error element after the input element
+				// add the error element after the input element
 				error.insertAfter(element);
 			}
 
