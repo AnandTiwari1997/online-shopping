@@ -32,17 +32,22 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public List<Category> list() {
+		
+		logger.info("Inside list() method of CategoryDAOImpl ... ");
 
 		String selectActiveCategory = "FROM Category WHERE active = :active";
 
 		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveCategory);
 		query.setParameter("active", true);
+		
+		logger.info("Getting List of Category ... " + query.getResultList());
 
 		return query.getResultList();
 	}
 
 	@Override
 	public Category get(int id) {
+		logger.info("Getting the Category of id ... " + id);
 		return sessionFactory.getCurrentSession().get(Category.class, Integer.valueOf(id));
 	}
 
@@ -51,6 +56,33 @@ public class CategoryDAOImpl implements CategoryDAO {
 		try {
 			logger.info("Creating New Category.... " + category);
 			sessionFactory.getCurrentSession().persist(category);
+			return true;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return false;
+	}
+
+	@Override
+	public boolean update(Category category) {
+		try {
+			logger.info("Updating Category.... " + category);
+			sessionFactory.getCurrentSession().update(category);
+			return true;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return false;
+	}
+
+	@Override
+	public boolean delete(Category category) {
+		
+		category.setActive(false);
+		
+		try {
+			logger.info("Deleting Category.... " + category);
+			sessionFactory.getCurrentSession().update(category);
 			return true;
 		} catch (Exception e) {
 			logger.error(e.getMessage());

@@ -35,4 +35,22 @@ public interface CategoryDAO {
 	 */
 	boolean add(Category category);
 
+	/**
+	 * Updating the category.
+	 * 
+	 * @param category
+	 *            Category Object.
+	 * @return true or false.
+	 */
+	boolean update(Category category);
+
+	/**
+	 * Delete the category.
+	 * 
+	 * @param category
+	 *            Category Object.
+	 * @return true or false.
+	 */
+	boolean delete(Category category);
+
 }
