@@ -11,18 +11,28 @@ import com.anand.shoppingbackend.dto.Category;
  *
  */
 public interface CategoryDAO {
-	
+
 	/**
 	 * 
 	 * @return list of the category.
 	 */
 	List<Category> list();
-	
+
 	/**
 	 * 
-	 * @param id index of category.
+	 * @param id
+	 *            index of category.
 	 * @return category object.
 	 */
 	Category get(int id);
-	
+
+	/**
+	 * Adding new Category to database.
+	 * 
+	 * @param category
+	 *            Category Object.
+	 * @return boolean true or false.
+	 */
+	boolean add(Category category);
+
 }
